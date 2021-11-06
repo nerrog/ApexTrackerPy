@@ -22,8 +22,16 @@ gitを使用してインストールすることもできます
 All return values are in json.
 In the future, we plan to implement return methods other than json.
 
+However, if you install from git, some functions will be returned by their own class.
+
+If you install the stable version from git, please specify the tag
+
 返り値はすべてjsonです。
 将来的にはjson以外の返却方法も実装する予定です
+
+ただし、gitからインストールした場合は一部関数は独自クラスによって値が返却されます
+
+gitから安定版をインストールする場合tagの指定をしてください
 
 ## Apex Legends API
 Use the API at [apexlegendsapi.com](https://apexlegendsapi.com/).
