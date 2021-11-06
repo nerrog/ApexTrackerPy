@@ -3,7 +3,9 @@
 # License: MIT
 
 import requests
+import ApexTrackerPy.Apexclass
 
+# private void
 def _checkplatform(platform):
     """
     Check if the platform is valid.
@@ -22,6 +24,7 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     :param playerName: The player name to use.
     :param Isuid: If the player name is a UUID.
     """
+
     if _checkplatform(platform or Isuid):
         url = ""
         if Isuid:
@@ -31,7 +34,26 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
         try:
             response = requests.get(url, headers={'Authorization': api_key})
             if response.status_code == 200:
-                return response.json()
+                r = response.json()
+                res = ApexTrackerPy.Apexclass.A_Player_Data(
+                    row_json=response.json(), 
+                    name=r["global"]["name"], 
+                    uid=r["global"]["uid"],
+                    avatar_url=r["global"]["avatar"],
+                    level=r["global"]["level"], 
+                    Isban=r["global"]["bans"]["isActive"],
+                    Rank_RP=r["global"]["rank"]["rankScore"],
+                    CurrentRank=r["global"]["rank"]["rankName"], 
+                    Arena_Rank_RP=r["global"]["arena"]["rankScore"],
+                    Arena_Current_Rank=r["global"]["arena"]["rankName"],
+                    battlepass_level=r["global"]["battlepass"]["level"],
+                    badges_json=r["global"]["badges"],
+                    Player_status=r["realtime"],
+                    legends_json=r["legends"],
+                    total_kill=r["total"]["kills"]["value"],
+                    total_damage=r["total"]["damage"]["value"]
+                    )
+                return res
             else:
                 raise Exception('HttpError!:The API returned status code '+str(response.status_code))
         except Exception as e:
