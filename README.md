@@ -78,6 +78,11 @@ As per the [documentation](https://apexlegendsapi.com/documentation.php#buttons-
 CallOriginAPI(api_key, PlayerName)
 ```
 
+### Name to UID API
+```py
+GetUIDbyName(api_key, platform, PlayerName)
+```
+
 ## Tracker Network API
 Use the API at [Tracker Network APIs for Developers](https://tracker.gg/developers/docs/titles/apex).
 

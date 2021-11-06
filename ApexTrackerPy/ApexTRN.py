@@ -6,7 +6,7 @@ import requests
 
 API_VER = 'v2'
 
-def checkplatform(platform):
+def _checkplatform(platform):
     """
     Check if the platform is valid.
     :param platform: The platform to check.
@@ -23,7 +23,7 @@ def GetApexPlayerStatus_TRN(api_key, platform, playerName):
     :param platform: The platform to use.
     :param playerName: The player name to use.
     """
-    if checkplatform(platform):
+    if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}'
         try:
             response = requests.get(url, headers={'TRN-Api-Key': api_key})
@@ -43,7 +43,7 @@ def GetApexPlayersMatchHistory_TRN(api_key, platform, playerName):
     :param platform: The platform to use.
     :param playerName: The player name to use.
     """
-    if checkplatform(platform):
+    if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}/sessions'
         try:
             response = requests.get(url, headers={'TRN-Api-Key': api_key})

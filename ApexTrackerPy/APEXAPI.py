@@ -4,8 +4,7 @@
 
 import requests
 
-
-def checkplatform(platform):
+def _checkplatform(platform):
     """
     Check if the platform is valid.
     :param platform: The platform to check.
@@ -23,7 +22,7 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     :param playerName: The player name to use.
     :param Isuid: If the player name is a UUID.
     """
-    if checkplatform(platform or Isuid):
+    if _checkplatform(platform or Isuid):
         url = ""
         if Isuid:
             url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&uid={playerName}'
@@ -111,3 +110,23 @@ def CallOriginAPI(api_key, PlayerName):
             raise Exception('HttpError!:The API returned status code '+str(response.status_code))
     except Exception as e:
         raise Exception('HttpError!:An error has occurred during the API call.\n'+str(e))
+
+def GetUIDbyName(api_key, platform, PlayerName):
+    """
+    Get the UUID of a player by his name.
+    :param api_key: The API key to use.
+    :param platform: The platform to use.
+    :param PlayerName: The player name to use.
+    """
+    if _checkplatform(platform):
+        url = f'https://api.mozambiquehe.re/nametouid?player={PlayerName}&platform={platform}'
+        try:
+            response = requests.get(url, headers={'Authorization': api_key})
+            if response.status_code == 200:
+                return response.json()
+            else:
+                raise Exception('HttpError!:The API returned status code '+str(response.status_code))
+        except Exception as e:
+            raise Exception('HttpError!:An error has occurred during the API call.\n'+str(e))
+    else:
+        raise Exception('Invalid platform!')
