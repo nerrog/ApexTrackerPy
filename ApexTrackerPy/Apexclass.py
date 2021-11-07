@@ -2,6 +2,8 @@
 # Copyright (c) 2021 nerrog
 # License: MIT
 
+from enum import Enum
+
 # Class for Apex Legends API data
 
 # PlayerData
@@ -88,3 +90,138 @@ class A_Map_Rotation():
         self.ArenaRanked_Next_End_Time = ArenaRanked_Next_End_Time
         self.ArenaRanked_Next_Start_Time_datetime = ArenaRanked_Next_Start_Time_datetime
         self.ArenaRanked_Next_End_Time_datetime = ArenaRanked_Next_End_Time_datetime
+
+
+# NewsData (return json only)
+class A_News():
+    def __init__(self, row_json):
+        self.row_json = row_json
+
+class Origin_login():
+    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+
+class EA_novafusion():
+    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+
+class EA_accounts():
+    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+
+class ApexOauth_Crossplay():
+    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+
+class CSServer():
+    Playstation_Network = {'Status': 'UP'}
+    Xbox_Live = {'Status': 'UP'}
+
+
+# ServerData (return list)
+class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crossplay, CSServer):
+    row_json = {}
+
+    def __init__(self, row_json,
+    Origin_login_EU_West, Origin_login_EU_East, Origin_login_US_West, Origin_login_US_Central, Origin_login_US_East, Origin_login_SouthAmerica, Origin_login_Asia,
+    EA_novafusion_EU_West, EA_novafusion_EU_East, EA_novafusion_US_West, EA_novafusion_US_Central, EA_novafusion_US_East, EA_novafusion_SouthAmerica, EA_novafusion_Asia,
+    EA_accounts_EU_West, EA_accounts_EU_East, EA_accounts_US_West, EA_accounts_US_Central, EA_accounts_US_East, EA_accounts_SouthAmerica, EA_accounts_Asia,
+    ApexOauth_Crossplay_EU_West, ApexOauth_Crossplay_EU_East, ApexOauth_Crossplay_US_West, ApexOauth_Crossplay_US_Central, ApexOauth_Crossplay_US_East, ApexOauth_Crossplay_SouthAmerica, ApexOauth_Crossplay_Asia,
+    CSServer_Playstation_Network, CSServer_Xbox_Live):
+        self.row_json = row_json
+        Origin_login.EU_West = Origin_login_EU_West
+        Origin_login.EU_East = Origin_login_EU_East
+        Origin_login.US_West = Origin_login_US_West
+        Origin_login.US_Central = Origin_login_US_Central
+        Origin_login.US_East = Origin_login_US_East
+        Origin_login.SouthAmerica = Origin_login_SouthAmerica
+        Origin_login.Asia = Origin_login_Asia
+
+        EA_novafusion.EU_West = EA_novafusion_EU_West
+        EA_novafusion.EU_East = EA_novafusion_EU_East
+        EA_novafusion.US_West = EA_novafusion_US_West
+        EA_novafusion.US_Central = EA_novafusion_US_Central
+        EA_novafusion.US_East = EA_novafusion_US_East
+        EA_novafusion.SouthAmerica = EA_novafusion_SouthAmerica
+        EA_novafusion.Asia = EA_novafusion_Asia
+
+        EA_accounts.EU_West = EA_accounts_EU_West
+        EA_accounts.EU_East = EA_accounts_EU_East
+        EA_accounts.US_West = EA_accounts_US_West
+        EA_accounts.US_Central = EA_accounts_US_Central
+        EA_accounts.US_East = EA_accounts_US_East
+        EA_accounts.SouthAmerica = EA_accounts_SouthAmerica
+        EA_accounts.Asia = EA_accounts_Asia
+
+        ApexOauth_Crossplay.EU_West = ApexOauth_Crossplay_EU_West
+        ApexOauth_Crossplay.EU_East = ApexOauth_Crossplay_EU_East
+        ApexOauth_Crossplay.US_West = ApexOauth_Crossplay_US_West
+        ApexOauth_Crossplay.US_Central = ApexOauth_Crossplay_US_Central
+        ApexOauth_Crossplay.US_East = ApexOauth_Crossplay_US_East
+        ApexOauth_Crossplay.SouthAmerica = ApexOauth_Crossplay_SouthAmerica
+        ApexOauth_Crossplay.Asia = ApexOauth_Crossplay_Asia
+
+        CSServer.Playstation_Network = CSServer_Playstation_Network
+        CSServer.Xbox_Live = CSServer_Xbox_Live
+
+
+    def Origin_login(self, region):
+        try:
+            res = Origin_login.__dict__[region]
+        except:
+            raise Exception("Region not found")
+
+        return res
+
+    def EA_novafusion(self, region):
+        try:
+            res = EA_novafusion.__dict__[region]
+        except:
+            raise Exception("Region not found")
+
+        return res
+
+    def EA_accounts(self, region):
+        try:
+            res = EA_accounts.__dict__[region]
+        except:
+            raise Exception("Region not found")
+
+        return res
+
+    def ApexOauth_Crossplay(self, region):
+        try:
+            res = ApexOauth_Crossplay.__dict__[region]
+        except:
+            raise Exception("Region not found")
+
+        return res
+
+    def CSServer(self, region):
+        try:
+            res = CSServer.__dict__[region]
+        except:
+            raise Exception("Region not found")
+
+        return res
+        

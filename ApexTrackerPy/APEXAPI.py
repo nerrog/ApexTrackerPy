@@ -134,7 +134,10 @@ def GetApexNews(api_key, *language):
     try:
         response = requests.get(url, headers={'Authorization': api_key})
         if response.status_code == 200:
-            return response.json()
+            res = ApexTrackerPy.Apexclass.A_News(
+                row_json=response.json()
+            )
+            return res
         else:
             raise Exception('HttpError!:The API returned status code '+str(response.status_code))
     except Exception as e:
@@ -152,7 +155,46 @@ def GetApexServerStatus(api_key):
     try:
         response = requests.get(url, headers={'Authorization': api_key})
         if response.status_code == 200:
-            return response.json()
+            r = response.json()
+            res = ApexTrackerPy.Apexclass.A_Server_Data(
+                row_json=r,
+                Origin_login_EU_West=r["Origin_login"]["EU-West"],
+                Origin_login_EU_East=r["Origin_login"]["EU-East"],
+                Origin_login_US_West=r["Origin_login"]["US-West"],
+                Origin_login_US_East=r["Origin_login"]["US-East"],
+                Origin_login_US_Central=r["Origin_login"]["US-Central"],
+                Origin_login_Asia=r["Origin_login"]["Asia"],
+                Origin_login_SouthAmerica=r["Origin_login"]["SouthAmerica"],
+
+                EA_novafusion_EU_West=r["EA_novafusion"]["EU-West"],
+                EA_novafusion_EU_East=r["EA_novafusion"]["EU-East"],
+                EA_novafusion_US_West=r["EA_novafusion"]["US-West"],
+                EA_novafusion_US_East=r["EA_novafusion"]["US-East"],
+                EA_novafusion_US_Central=r["EA_novafusion"]["US-Central"],
+                EA_novafusion_Asia=r["EA_novafusion"]["Asia"],
+                EA_novafusion_SouthAmerica=r["EA_novafusion"]["SouthAmerica"],
+
+                EA_accounts_EU_West=r["EA_accounts"]["EU-West"],
+                EA_accounts_EU_East=r["EA_accounts"]["EU-East"],
+                EA_accounts_US_West=r["EA_accounts"]["US-West"],
+                EA_accounts_US_East=r["EA_accounts"]["US-East"],
+                EA_accounts_US_Central=r["EA_accounts"]["US-Central"],
+                EA_accounts_Asia=r["EA_accounts"]["Asia"],
+                EA_accounts_SouthAmerica=r["EA_accounts"]["SouthAmerica"],
+
+                ApexOauth_Crossplay_EU_West=r["ApexOauth_Crossplay"]["EU-West"],
+                ApexOauth_Crossplay_EU_East=r["ApexOauth_Crossplay"]["EU-East"],
+                ApexOauth_Crossplay_US_West=r["ApexOauth_Crossplay"]["US-West"],
+                ApexOauth_Crossplay_US_East=r["ApexOauth_Crossplay"]["US-East"],
+                ApexOauth_Crossplay_US_Central=r["ApexOauth_Crossplay"]["US-Central"],
+                ApexOauth_Crossplay_Asia=r["ApexOauth_Crossplay"]["Asia"],
+                ApexOauth_Crossplay_SouthAmerica=r["ApexOauth_Crossplay"]["SouthAmerica"],
+
+                CSServer_Playstation_Network=r["otherPlatforms"]["Playstation-Network"],
+                CSServer_Xbox_Live=r["otherPlatforms"]["Xbox-Live"],
+
+            )
+            return res
         else:
             raise Exception('HttpError!:The API returned status code '+str(response.status_code))
     except Exception as e:

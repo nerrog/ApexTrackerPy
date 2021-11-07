@@ -1,4 +1,9 @@
 # ApexTrackerPy
+
+[![PyPI version](https://badge.fury.io/py/ApexTrackerPy.svg)](https://badge.fury.io/py/ApexTrackerPy)
+![PyPI - Downloads](https://img.shields.io/pypi/dw/ApexTrackerPy)
+[![CodeQL](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml)
+
 Python library that calls the ApexLegends tracker API
 
 ApexLegendsトラッカーAPIを呼び出すpythonライブラリ
