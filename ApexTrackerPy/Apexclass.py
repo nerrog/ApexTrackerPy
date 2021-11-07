@@ -2,8 +2,6 @@
 # Copyright (c) 2021 nerrog
 # License: MIT
 
-from enum import Enum
-
 # Class for Apex Legends API data
 
 # PlayerData
@@ -224,4 +222,3 @@ class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crosspla
             raise Exception("Region not found")
 
         return res
-        
