@@ -225,7 +225,7 @@ class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crosspla
         return res
 
 class A_Origin_API():
-
+    # name to uidと共用
     def __init__(self, row_json,
      name, uid, pid, avater):
         self.row_json = row_json
