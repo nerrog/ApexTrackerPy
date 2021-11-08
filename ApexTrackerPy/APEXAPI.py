@@ -212,7 +212,15 @@ def CallOriginAPI(api_key, PlayerName):
         response = requests.get(url, headers={'Authorization': api_key})
         if response.status_code == 200 or response.status_code == 500:
             # 何故か現状500が返ってくる
-            return response.json()
+            r = response.json()
+            res = ApexTrackerPy.Apexclass.A_Origin_API(
+                row_json=r,
+                name=r["name"],
+                uid=r["uid"],
+                pid=r["pid"],
+                avater=r["avatar"]
+            )
+            return res
         else:
             raise Exception('HttpError!:The API returned status code '+str(response.status_code))
     except Exception as e:

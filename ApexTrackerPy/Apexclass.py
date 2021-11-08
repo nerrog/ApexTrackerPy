@@ -95,6 +95,7 @@ class A_News():
     def __init__(self, row_json):
         self.row_json = row_json
 
+# Server Data Class
 class Origin_login():
     EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
     EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
@@ -215,10 +216,20 @@ class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crosspla
 
         return res
 
-    def CSServer(self, region):
+    def CSServer(self, platform):
         try:
-            res = CSServer.__dict__[region]
+            res = CSServer.__dict__[platform]
         except:
-            raise Exception("Region not found")
+            raise Exception("Platform not found")
 
         return res
+
+class A_Origin_API():
+
+    def __init__(self, row_json,
+     name, uid, pid, avater):
+        self.row_json = row_json
+        self.name = name
+        self.uid = uid
+        self.pid = pid
+        self.avater = avater
