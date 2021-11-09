@@ -4,6 +4,8 @@
 
 import requests
 
+from ApexTrackerPy.Apexclass import TRN_PlayerStatus
+
 API_VER = 'v2'
 
 def _checkplatform(platform):
@@ -28,7 +30,31 @@ def GetApexPlayerStatus_TRN(api_key, platform, playerName):
         try:
             response = requests.get(url, headers={'TRN-Api-Key': api_key})
             if response.status_code == 200:
-                return response.json()
+                r = response.json()
+                
+                list_legends_data = []
+
+                for d in r['data']['segments']:
+                    if d["type"] == "overview":
+                        continue
+                    else:
+                        list_legends_data.append(d)
+
+                res = TRN_PlayerStatus(
+                    row_json=r,
+                    platformUserId=r['data']['platformInfo']['platformUserId'],
+                    activelegend=r['data']['metadata']['activeLegend'],
+                    userlevel=r['data']['segments'][0]['stats']['level']['value'],
+                    totalkill=r['data']['segments'][0]['stats']['kills']['value'],
+                    totaldamage=r['data']['segments'][0]['stats']['damage']['value'],
+                    totalheadshots=r['data']['segments'][0]['stats']['headshots']['value'],
+                    CurrentRank=r['data']['segments'][0]['stats']['rankScore']['metadata']['rankName'],
+                    CurrentRankScore=r['data']['segments'][0]['stats']['rankScore']['value'],
+                    ArenaRankedName=r['data']['segments'][0]['stats']['arenaRankScore']['metadata']['rankName'],
+                    ArenaRankedScore=r['data']['segments'][0]['stats']['arenaRankScore']['value'],
+                    legends_json=list_legends_data,
+                )
+                return res
             else:
                 raise Exception('HttpError!:The API returned status code '+str(response.status_code))
         except Exception as e:

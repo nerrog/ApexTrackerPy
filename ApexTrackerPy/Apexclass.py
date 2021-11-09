@@ -233,3 +233,23 @@ class A_Origin_API():
         self.uid = uid
         self.pid = pid
         self.avater = avater
+
+# Class for Tracker Network Data
+
+class TRN_PlayerStatus():
+
+    def __init__(self, row_json,
+    platformUserId, activelegend, userlevel, totalkill, totaldamage, totalheadshots, CurrentRankScore, CurrentRank,
+    ArenaRankedScore, ArenaRankedName, legends_json):
+        self.row_json = row_json
+        self.platformUserId = platformUserId
+        self.activelegend = activelegend
+        self.userlevel = userlevel
+        self.totalkill = totalkill
+        self.totaldamage = totaldamage
+        self.totalheadshots = totalheadshots
+        self.CurrentRankScore = CurrentRankScore
+        self.CurrentRank = CurrentRank
+        self.ArenaRankedScore = ArenaRankedScore
+        self.ArenaRankedName = ArenaRankedName
+        self.legends_json = legends_json
