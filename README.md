@@ -1,8 +1,11 @@
 # ApexTrackerPy
 
 [![PyPI version](https://badge.fury.io/py/ApexTrackerPy.svg)](https://badge.fury.io/py/ApexTrackerPy)
-![PyPI - Downloads](https://img.shields.io/pypi/dw/ApexTrackerPy)
 [![CodeQL](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml)
+
+[![Downloads](https://pepy.tech/badge/apextrackerpy)](https://pepy.tech/project/apextrackerpy)
+[![Downloads](https://pepy.tech/badge/apextrackerpy/month)](https://pepy.tech/project/apextrackerpy)
+[![Downloads](https://pepy.tech/badge/apextrackerpy/week)](https://pepy.tech/project/apextrackerpy)
 
 Python library that calls the ApexLegends tracker API
 
