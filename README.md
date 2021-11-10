@@ -1,6 +1,7 @@
 # ApexTrackerPy
 
 [![PyPI version](https://badge.fury.io/py/ApexTrackerPy.svg)](https://badge.fury.io/py/ApexTrackerPy)
+[![Build](https://github.com/nerrog/ApexTrackerPy/actions/workflows/Build.yml/badge.svg)](https://github.com/nerrog/ApexTrackerPy/actions/workflows/Build.yml)
 [![CodeQL](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nerrog/ApexTrackerPy/actions/workflows/codeql-analysis.yml)
 
 [![Downloads](https://pepy.tech/badge/apextrackerpy)](https://pepy.tech/project/apextrackerpy)
