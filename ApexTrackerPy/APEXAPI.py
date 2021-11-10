@@ -2,7 +2,6 @@
 # Copyright (c) 2021 nerrog
 # License: MIT
 
-from types import resolve_bases
 import requests
 import ApexTrackerPy.Apexclass
 

@@ -253,3 +253,10 @@ class TRN_PlayerStatus():
         self.ArenaRankedScore = ArenaRankedScore
         self.ArenaRankedName = ArenaRankedName
         self.legends_json = legends_json
+
+class TRN_MatchHistory():
+
+    def __init__(self, row_json,
+    matches_list):
+        self.row_json = row_json
+        self.matches_list = matches_list

@@ -3,8 +3,7 @@
 # License: MIT
 
 import requests
-
-from ApexTrackerPy.Apexclass import TRN_PlayerStatus
+import ApexTrackerPy.Apexclass
 
 API_VER = 'v2'
 
@@ -40,7 +39,7 @@ def GetApexPlayerStatus_TRN(api_key, platform, playerName):
                     else:
                         list_legends_data.append(d)
 
-                res = TRN_PlayerStatus(
+                res = ApexTrackerPy.Apexclass.TRN_PlayerStatus(
                     row_json=r,
                     platformUserId=r['data']['platformInfo']['platformUserId'],
                     activelegend=r['data']['metadata']['activeLegend'],
@@ -74,7 +73,12 @@ def GetApexPlayersMatchHistory_TRN(api_key, platform, playerName):
         try:
             response = requests.get(url, headers={'TRN-Api-Key': api_key})
             if response.status_code == 200:
-                return response.json()
+                r = response.json()
+                res = ApexTrackerPy.Apexclass.TRN_MatchHistory(
+                    row_json=r,
+                    matches_list=r['data']["items"],
+                )
+                return res
             else:
                 raise Exception('HttpError!:The API returned status code '+str(response.status_code))
         except Exception as e:
