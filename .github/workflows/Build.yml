@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  numpy-test:
+  Build-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -22,5 +22,5 @@ jobs:
       - name: upload wheel package
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: ApexTrackerPy-Actions-Build
           path: dist/
