@@ -97,44 +97,44 @@ class A_News():
 
 # Server Data Class
 class Origin_login():
-    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    EU_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_Central = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    Asia = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
 
 class EA_novafusion():
-    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    EU_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_Central = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    Asia = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
 
 class EA_accounts():
-    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    EU_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_Central = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    Asia = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
 
 class ApexOauth_Crossplay():
-    EU_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    EU_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_West = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_Central = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    US_East = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    SouthAmerica = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
-    Asia = {'Status': 'UP', 'HTTPCode': 200, "ResponseTime": 0}
+    EU_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    EU_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_West = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_Central = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    US_East = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    SouthAmerica = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
+    Asia = {'Status': 'UNKNOWN', 'HTTPCode': 0, "ResponseTime": 0}
 
 class CSServer():
-    Playstation_Network = {'Status': 'UP'}
-    Xbox_Live = {'Status': 'UP'}
+    Playstation_Network = {'Status': 'UNKNOWN'}
+    Xbox_Live = {'Status': 'UNKNOWN'}
 
 
 # ServerData (return list)
