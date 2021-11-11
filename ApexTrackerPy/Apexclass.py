@@ -7,7 +7,7 @@
 # PlayerData
 class A_Player_Data:
     def __init__(self, row_json,
-    name, uid, avatar_url, level, Isban, Rank_RP, CurrentRank, Arena_Rank_RP, Arena_Current_Rank, battlepass_level, badges_json, 
+    name, uid, avatar_url, level, Isban, Rank_RP, CurrentRank, Arena_Rank_RP, Arena_Current_Rank, battlepass_level, battlepass_history_list, badges_json, 
     Player_status, legends_json, total_kill, total_damage):
         self.row_json = row_json
         self.name = name
@@ -20,6 +20,7 @@ class A_Player_Data:
         self.Arena_Rank_RP = Arena_Rank_RP
         self.Arena_Current_Rank = Arena_Current_Rank
         self.battlepass_level = battlepass_level
+        self.battlepass_history_list = battlepass_history_list
         self.badges_json = badges_json
         self.Player_status = Player_status
         self.legends_json = legends_json
