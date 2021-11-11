@@ -4,6 +4,7 @@
 
 import requests
 import ApexTrackerPy.Apexclass
+from ApexTrackerPy.get_requests import get_request
 
 # private void
 def _checkplatform(platform):
@@ -32,18 +33,20 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
         else:
             url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&player={playerName}'
         try:
-            response = requests.get(url, headers={'Authorization': api_key})
+            res = get_request(url, {'Authorization': api_key})
+            response = res[0]
             if response.status_code == 200:
                 r = response.json()
                 res = ApexTrackerPy.Apexclass.A_Player_Data(
                     row_json=r, 
+                    elapsed_time=res[1],
                     name=r["global"]["name"], 
                     uid=r["global"]["uid"],
                     avatar_url=r["global"]["avatar"],
                     level=r["global"]["level"], 
                     Isban=r["global"]["bans"]["isActive"],
                     Rank_RP=r["global"]["rank"]["rankScore"],
-                    CurrentRank=r["global"]["rank"]["rankName"]+ " "+str(r["global"]["rank"]["rankDiv"]), 
+                    CurrentRank="".join([r["global"]["rank"]["rankName"], " ", str(r["global"]["rank"]["rankDiv"])]), 
                     Arena_Rank_RP=r["global"]["arena"]["rankScore"],
                     Arena_Current_Rank=r["global"]["arena"]["rankName"]+ " "+str(r["global"]["arena"]["rankDiv"]),
                     battlepass_level=r["global"]["battlepass"]["level"],
@@ -70,11 +73,13 @@ def GetApexMapRotation(api_key):
     """
     url = f'https://api.mozambiquehe.re/maprotation?version=2'
     try:
-        response = requests.get(url, headers={'Authorization': api_key})
+        res = get_request(url, {'Authorization': api_key})
+        response = res[0]
         if response.status_code == 200:
             r =  response.json()
             res = ApexTrackerPy.Apexclass.A_Map_Rotation(
                 row_json=r,
+                elapsed_time=res[1],
                 BattleRoyal_Current_Map=r["battle_royale"]["current"]["map"],
                 BattleRoyal_Current_Image=r["battle_royale"]["current"]["asset"],
                 BattleRoyal_Current_Start_Time=r["battle_royale"]["current"]["start"],
@@ -133,10 +138,12 @@ def GetApexNews(api_key, *language):
     else:
         url = f'https://api.mozambiquehe.re/news?lang=en-us'
     try:
-        response = requests.get(url, headers={'Authorization': api_key})
+        res = get_request(url, {'Authorization': api_key})
+        response = res[0]
         if response.status_code == 200:
             res = ApexTrackerPy.Apexclass.A_News(
-                row_json=response.json()
+                row_json=response.json(),
+                elapsed_time=res[1]
             )
             return res
         else:
@@ -154,11 +161,13 @@ def GetApexServerStatus(api_key):
     """
     url = 'https://api.mozambiquehe.re/servers'
     try:
-        response = requests.get(url, headers={'Authorization': api_key})
+        res = get_request(url, {'Authorization': api_key})
+        response = res[0]
         if response.status_code == 200:
             r = response.json()
             res = ApexTrackerPy.Apexclass.A_Server_Data(
                 row_json=r,
+                elapsed_time=res[1],
                 Origin_login_EU_West=r["Origin_login"]["EU-West"],
                 Origin_login_EU_East=r["Origin_login"]["EU-East"],
                 Origin_login_US_West=r["Origin_login"]["US-West"],
@@ -210,12 +219,14 @@ def CallOriginAPI(api_key, PlayerName):
     """
     url = f'https://api.mozambiquehe.re/origin?player={PlayerName}'
     try:
-        response = requests.get(url, headers={'Authorization': api_key})
+        res = get_request(url, {'Authorization': api_key})
+        response = res[0]
         if response.status_code == 200 or response.status_code == 500:
             # 何故か現状500が返ってくる
             r = response.json()
             res = ApexTrackerPy.Apexclass.A_Origin_API(
                 row_json=r,
+                elapsed_time=res[1],
                 name=r["name"],
                 uid=r["uid"],
                 pid=r["pid"],
@@ -237,11 +248,13 @@ def GetUIDbyName(api_key, platform, PlayerName):
     if _checkplatform(platform):
         url = f'https://api.mozambiquehe.re/nametouid?player={PlayerName}&platform={platform}'
         try:
-            response = requests.get(url, headers={'Authorization': api_key})
+            res = get_request(url, {'Authorization': api_key})
+            response = res[0]
             if response.status_code == 200:
                 r = response.json()
                 res = ApexTrackerPy.Apexclass.A_Origin_API(
                     row_json=r,
+                    elapsed_time=res[1],
                     name=r["name"],
                     uid=r["uid"],
                     pid=r["pid"],

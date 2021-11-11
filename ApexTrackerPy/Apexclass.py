@@ -6,10 +6,11 @@
 
 # PlayerData
 class A_Player_Data:
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
     name, uid, avatar_url, level, Isban, Rank_RP, CurrentRank, Arena_Rank_RP, Arena_Current_Rank, battlepass_level, battlepass_history_list, badges_json, 
     Player_status, legends_json, total_kill, total_damage):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
         self.name = name
         self.uid = uid
         self.avatar_url = avatar_url
@@ -29,7 +30,7 @@ class A_Player_Data:
 
 # MapRotationData
 class A_Map_Rotation():
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
     #バトロワ(Current)
     BattleRoyal_Current_Map, BattleRoyal_Current_Image, BattleRoyal_Current_Start_Time, BattleRoyal_Current_End_Time,
     BattleRoyal_Current_Start_Time_datetime, BattleRoyal_Current_End_Time_datetime,BattleRoyal_Current_remainingTimer,
@@ -50,6 +51,7 @@ class A_Map_Rotation():
     ArenaRanked_Next_Map, ArenaRanked_Next_Start_Time, ArenaRanked_Next_End_Time,
     ArenaRanked_Next_Start_Time_datetime, ArenaRanked_Next_End_Time_datetime):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
         self.BattleRoyal_Current_Map = BattleRoyal_Current_Map
         self.BattleRoyal_Current_Image = BattleRoyal_Current_Image
         self.BattleRoyal_Current_Start_Time = BattleRoyal_Current_Start_Time
@@ -93,8 +95,9 @@ class A_Map_Rotation():
 
 # NewsData (return json only)
 class A_News():
-    def __init__(self, row_json):
+    def __init__(self, row_json, elapsed_time):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
 
 # Server Data Class
 class Origin_login():
@@ -140,15 +143,17 @@ class CSServer():
 
 # ServerData (return list)
 class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crossplay, CSServer):
-    row_json = {}
 
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
     Origin_login_EU_West, Origin_login_EU_East, Origin_login_US_West, Origin_login_US_Central, Origin_login_US_East, Origin_login_SouthAmerica, Origin_login_Asia,
     EA_novafusion_EU_West, EA_novafusion_EU_East, EA_novafusion_US_West, EA_novafusion_US_Central, EA_novafusion_US_East, EA_novafusion_SouthAmerica, EA_novafusion_Asia,
     EA_accounts_EU_West, EA_accounts_EU_East, EA_accounts_US_West, EA_accounts_US_Central, EA_accounts_US_East, EA_accounts_SouthAmerica, EA_accounts_Asia,
     ApexOauth_Crossplay_EU_West, ApexOauth_Crossplay_EU_East, ApexOauth_Crossplay_US_West, ApexOauth_Crossplay_US_Central, ApexOauth_Crossplay_US_East, ApexOauth_Crossplay_SouthAmerica, ApexOauth_Crossplay_Asia,
     CSServer_Playstation_Network, CSServer_Xbox_Live):
+
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
+
         Origin_login.EU_West = Origin_login_EU_West
         Origin_login.EU_East = Origin_login_EU_East
         Origin_login.US_West = Origin_login_US_West
@@ -227,9 +232,10 @@ class A_Server_Data(Origin_login, EA_novafusion, EA_accounts, ApexOauth_Crosspla
 
 class A_Origin_API():
     # name to uidと共用
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
      name, uid, pid, avater):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
         self.name = name
         self.uid = uid
         self.pid = pid
@@ -239,10 +245,11 @@ class A_Origin_API():
 
 class TRN_PlayerStatus():
 
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
     platformUserId, activelegend, userlevel, totalkill, totaldamage, totalheadshots, CurrentRankScore, CurrentRank,
     ArenaRankedScore, ArenaRankedName, legends_json):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
         self.platformUserId = platformUserId
         self.activelegend = activelegend
         self.userlevel = userlevel
@@ -257,7 +264,8 @@ class TRN_PlayerStatus():
 
 class TRN_MatchHistory():
 
-    def __init__(self, row_json,
+    def __init__(self, row_json, elapsed_time,
     matches_list):
         self.row_json = row_json
+        self.elapsed_time = elapsed_time
         self.matches_list = matches_list

@@ -4,6 +4,7 @@
 
 import requests
 import ApexTrackerPy.Apexclass
+from ApexTrackerPy.get_requests import get_request
 
 API_VER = 'v2'
 
@@ -27,20 +28,23 @@ def GetApexPlayerStatus_TRN(api_key, platform, playerName):
     if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}'
         try:
-            response = requests.get(url, headers={'TRN-Api-Key': api_key})
+            res = get_request(url, {'TRN-Api-Key': api_key})
+            response = res[0]
             if response.status_code == 200:
                 r = response.json()
                 
                 list_legends_data = []
+                my_append = list_legends_data.append
 
                 for d in r['data']['segments']:
                     if d["type"] == "overview":
                         continue
                     else:
-                        list_legends_data.append(d)
+                        my_append(d)
 
                 res = ApexTrackerPy.Apexclass.TRN_PlayerStatus(
                     row_json=r,
+                    elapsed_time=res[1],
                     platformUserId=r['data']['platformInfo']['platformUserId'],
                     activelegend=r['data']['metadata']['activeLegend'],
                     userlevel=r['data']['segments'][0]['stats']['level']['value'],
@@ -71,11 +75,13 @@ def GetApexPlayersMatchHistory_TRN(api_key, platform, playerName):
     if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}/sessions'
         try:
-            response = requests.get(url, headers={'TRN-Api-Key': api_key})
+            res = get_request(url, {'TRN-Api-Key': api_key})
+            response = res[0]
             if response.status_code == 200:
                 r = response.json()
                 res = ApexTrackerPy.Apexclass.TRN_MatchHistory(
                     row_json=r,
+                    elapsed_time=res[1],
                     matches_list=r['data']["items"],
                 )
                 return res
