@@ -18,6 +18,20 @@ def _checkplatform(platform):
     else:
         return False
 
+def _fixplatform(p):
+    """
+    Fix the platform.
+    :param platform: The platform to fix.
+    """
+    if p == 'pc' or p == 'PC' or p == 'ORIGIN':
+        return 'origin'
+    elif p == 'ps4' or p == 'PSN' or p == 'PS5' or p == 'ps5':
+        return 'psn'
+    elif p == 'x1' or p == 'xbox' or p == 'XBOX' or p == 'XBOX1' or p == 'XBL':
+        return 'xbl'
+    else:
+        return p
+
 def GetApexPlayerStatus_TRN(api_key, platform, playerName):
     """
     Get the status of a player on Apex Legends.
@@ -25,6 +39,8 @@ def GetApexPlayerStatus_TRN(api_key, platform, playerName):
     :param platform: The platform to use.
     :param playerName: The player name to use.
     """
+    platform = _fixplatform(platform)
+
     if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}'
         try:
@@ -72,6 +88,8 @@ def GetApexPlayersMatchHistory_TRN(api_key, platform, playerName):
     :param platform: The platform to use.
     :param playerName: The player name to use.
     """
+    platform = _fixplatform(platform)
+    
     if _checkplatform(platform):
         url = f'https://public-api.tracker.gg/{API_VER}/apex/standard/profile/{platform}/{playerName}/sessions'
         try:

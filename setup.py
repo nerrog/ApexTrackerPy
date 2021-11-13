@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="ApexTrackerPy",
     author="nerrog",
-    version="1.5",
+    version="1.6",
     url="https://github.com/nerrog/ApexTrackerPy",
     long_description=open(('README.md'), encoding='utf-8').read(),
     long_description_content_type='text/markdown',

@@ -17,6 +17,20 @@ def _checkplatform(platform):
     else:
         return False
 
+def _fixplatform(p):
+    """
+    Fix the platform.
+    :param platform: The platform to fix.
+    """
+    if p == 'pc' or p == 'origin' or p == 'ORIGIN':
+        return 'PC'
+    elif p == 'ps4' or p == 'psn' or p == 'PSN' or p == 'PS5' or p == 'ps5':
+        return 'PS4'
+    elif p == 'x1' or p == 'xbox' or p == 'XBOX':
+        return 'X1'
+    else:
+        return p
+
 def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     """
     Get the status of a player on Apex Legends.
@@ -25,6 +39,8 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     :param playerName: The player name to use.
     :param Isuid: If the player name is a UUID.
     """
+
+    platform = _fixplatform(platform)
 
     if _checkplatform(platform or Isuid):
         url = ""
@@ -245,6 +261,8 @@ def GetUIDbyName(api_key, platform, PlayerName):
     :param platform: The platform to use.
     :param PlayerName: The player name to use.
     """
+    platform = _fixplatform(platform)
+    
     if _checkplatform(platform):
         url = f'https://api.mozambiquehe.re/nametouid?player={PlayerName}&platform={platform}'
         try:
