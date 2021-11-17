@@ -54,25 +54,37 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
             response = res[0]
             if response.status_code == 200:
                 r = response.json()
+
+                TMP_RANKED = ""
+                TMP_ARENA_RANKED = ""
+                if r.get("global", {}).get("rank", {}).get("rankName", {}) == None or r.get("global", {}).get("rank", {}).get("rankDiv", {}) == None:
+                    TMP_RANKED = None
+                else:
+                    TMP_RANKED = r.get("global", {}).get("rank", {}).get("rankName", {}) + " " + str(r.get("global", {}).get("rank", {}).get("rankDiv", {}))
+                if r.get("global", {}).get("arena", {}).get("rankName", {}) == None or r.get("global", {}).get("arena", {}).get("rankDiv", {}) == None:
+                    TMP_ARENA_RANKED = None
+                else:
+                    TMP_ARENA_RANKED = r.get("global", {}).get("arena", {}).get("rankName", {}) + " " + str(r.get("global", {}).get("arena", {}).get("rankDiv", {}))
+
                 res = ApexTrackerPy.Apexclass.A_Player_Data(
                     row_json=r, 
                     elapsed_time=res[1],
-                    name=r["global"]["name"], 
-                    uid=r["global"]["uid"],
-                    avatar_url=r["global"]["avatar"],
-                    level=r["global"]["level"], 
-                    Isban=r["global"]["bans"]["isActive"],
-                    Rank_RP=r["global"]["rank"]["rankScore"],
-                    CurrentRank="".join([r["global"]["rank"]["rankName"], " ", str(r["global"]["rank"]["rankDiv"])]), 
-                    Arena_Rank_RP=r["global"]["arena"]["rankScore"],
-                    Arena_Current_Rank=r["global"]["arena"]["rankName"]+ " "+str(r["global"]["arena"]["rankDiv"]),
-                    battlepass_level=r["global"]["battlepass"]["level"],
-                    battlepass_history_list=r["global"]["battlepass"]["history"],
-                    badges_json=r["global"]["badges"],
-                    Player_status=r["realtime"],
-                    legends_json=r["legends"],
-                    total_kill=r["total"]["kills"]["value"],
-                    total_damage=r["total"]["damage"]["value"]
+                    name=r.get("global", {}).get("name"),
+                    uid=r.get("global", {}).get("uid"),
+                    avatar_url=r.get("global", {}).get("avatar"),
+                    level=r.get("global", {}).get("level"),
+                    Isban=r.get("global", {}).get("bans", {}).get("isActive"),
+                    Rank_RP=r.get("global", {}).get("rank", {}).get("rankScore"),
+                    CurrentRank=TMP_RANKED,
+                    Arena_Rank_RP=r.get("global", {}).get("arena", {}).get("rankScore"),
+                    Arena_Current_Rank=TMP_ARENA_RANKED,
+                    battlepass_level=r.get("global", {}).get("battlepass", {}).get("level"),
+                    battlepass_history_list=r.get("global", {}).get("battlepass", {}).get("history"),
+                    badges_json=r.get("global", {}).get("badges"),
+                    Player_status=r.get("realtime"),
+                    legends_json=r.get("legends"),
+                    total_kill=r.get("total", {}).get("kills", {}).get("value"),
+                    total_damage=r.get("total", {}).get("damage", {}).get("value")
                     )
                 return res
             else:
