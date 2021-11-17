@@ -269,3 +269,15 @@ class TRN_MatchHistory():
         self.row_json = row_json
         self.elapsed_time = elapsed_time
         self.matches_list = matches_list
+
+
+# Class for Respawn API Data
+# coming soon!
+
+class RSPN_Serverlist():
+    
+        def __init__(self, row_json, elapsed_time,
+        server_list):
+            self.row_json = row_json
+            self.elapsed_time = elapsed_time
+            self.server_list = server_list

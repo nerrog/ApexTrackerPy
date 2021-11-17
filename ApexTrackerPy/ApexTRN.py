@@ -2,7 +2,6 @@
 # Copyright (c) 2021 nerrog
 # License: MIT
 
-import requests
 import ApexTrackerPy.Apexclass
 from ApexTrackerPy.get_requests import get_request
 

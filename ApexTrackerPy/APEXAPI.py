@@ -2,7 +2,6 @@
 # Copyright (c) 2021 nerrog
 # License: MIT
 
-import requests
 import ApexTrackerPy.Apexclass
 from ApexTrackerPy.get_requests import get_request
 
@@ -12,7 +11,7 @@ def _checkplatform(platform):
     Check if the platform is valid.
     :param platform: The platform to check.
     """
-    if platform == 'PC' or platform == 'PS4' or platform == 'X1':
+    if platform == 'PC' or platform == 'PS4' or platform == 'X1' or platform == 'SWITCH':
         return True
     else:
         return False
@@ -28,6 +27,8 @@ def _fixplatform(p):
         return 'PS4'
     elif p == 'x1' or p == 'xbox' or p == 'XBOX':
         return 'X1'
+    elif p == 'switch' or p == 'SWITCH' or p == 'NINTENDO' or p == 'nintendo':
+        return 'SWITCH'
     else:
         return p
 
