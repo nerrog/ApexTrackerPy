@@ -32,6 +32,18 @@ def _fixplatform(p):
     else:
         return p
 
+def _1_ToTrue(val):
+    """
+    Convert 1 to True.
+    :param val: The value to convert.
+    """
+    if val == 1:
+        return True
+    elif val == 0:
+        return False
+    else:
+        return val
+
 def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     """
     Get the status of a player on Apex Legends.
@@ -84,7 +96,15 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
                     Player_status=r.get("realtime"),
                     legends_json=r.get("legends"),
                     total_kill=r.get("total", {}).get("kills", {}).get("value"),
-                    total_damage=r.get("total", {}).get("damage", {}).get("value")
+                    total_damage=r.get("total", {}).get("damage", {}).get("value"),
+                    #v1.8
+                    lobbyState=r.get("realtime", {}).get("lobbyState"),
+                    IsOnline=_1_ToTrue(r.get("realtime", {}).get("isOnline")),
+                    IsInGame=_1_ToTrue(r.get("realtime", {}).get("isInGame")),
+                    canJoin=_1_ToTrue(r.get("realtime", {}).get("canJoin")),
+                    PartyFull=_1_ToTrue(r.get("realtime", {}).get("partyFull")),
+                    Selected_legend=r.get("realtime", {}).get("selectedLegend"),
+                    CurrentState=r.get("realtime", {}).get("currentState"),
                     )
                 return res
             else:

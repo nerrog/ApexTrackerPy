@@ -8,7 +8,8 @@
 class A_Player_Data:
     def __init__(self, row_json, elapsed_time,
     name, uid, avatar_url, level, Isban, Rank_RP, CurrentRank, Arena_Rank_RP, Arena_Current_Rank, battlepass_level, battlepass_history_list, badges_json, 
-    Player_status, legends_json, total_kill, total_damage):
+    Player_status, legends_json, total_kill, total_damage, lobbyState, IsOnline, IsInGame,
+    canJoin, PartyFull, Selected_legend, CurrentState):
         self.row_json = row_json
         self.elapsed_time = elapsed_time
         self.name = name
@@ -27,6 +28,16 @@ class A_Player_Data:
         self.legends_json = legends_json
         self.total_kill = total_kill
         self.total_damage = total_damage
+        #v1.8
+        self.lobbyState = lobbyState
+        self.IsOnline = IsOnline
+        self.IsInGame = IsInGame
+        self.canJoin = canJoin
+        self.PartyFull = PartyFull
+        self.Selected_legend = Selected_legend
+        self.CurrentState = CurrentState
+
+
 
 # MapRotationData
 class A_Map_Rotation():
