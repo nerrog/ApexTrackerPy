@@ -4,6 +4,7 @@
 
 import ApexTrackerPy.Apexclass
 from ApexTrackerPy.get_requests import get_request
+from ApexTrackerPy.lang import translate
 
 # private void
 def _checkplatform(platform):
@@ -87,9 +88,9 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
                     level=r.get("global", {}).get("level"),
                     Isban=r.get("global", {}).get("bans", {}).get("isActive"),
                     Rank_RP=r.get("global", {}).get("rank", {}).get("rankScore"),
-                    CurrentRank=TMP_RANKED,
+                    CurrentRank=translate(TMP_RANKED, "Ranked"),
                     Arena_Rank_RP=r.get("global", {}).get("arena", {}).get("rankScore"),
-                    Arena_Current_Rank=TMP_ARENA_RANKED,
+                    Arena_Current_Rank=translate(TMP_ARENA_RANKED, "Ranked"),
                     battlepass_level=r.get("global", {}).get("battlepass", {}).get("level"),
                     battlepass_history_list=r.get("global", {}).get("battlepass", {}).get("history"),
                     badges_json=r.get("global", {}).get("badges"),
@@ -125,45 +126,45 @@ def GetApexMapRotation(api_key):
         res = get_request(url, {'Authorization': api_key})
         response = res[0]
         if response.status_code == 200:
-            r =  response.json()
+            r = response.json()
             res = ApexTrackerPy.Apexclass.A_Map_Rotation(
                 row_json=r,
                 elapsed_time=res[1],
-                BattleRoyal_Current_Map=r["battle_royale"]["current"]["map"],
+                BattleRoyal_Current_Map=translate(r["battle_royale"]["current"]["map"], "Map"),
                 BattleRoyal_Current_Image=r["battle_royale"]["current"]["asset"],
                 BattleRoyal_Current_Start_Time=r["battle_royale"]["current"]["start"],
                 BattleRoyal_Current_Start_Time_datetime=r["battle_royale"]["current"]["readableDate_start"],
                 BattleRoyal_Current_End_Time=r["battle_royale"]["current"]["end"],
                 BattleRoyal_Current_End_Time_datetime=r["battle_royale"]["current"]["readableDate_end"],
                 BattleRoyal_Current_remainingTimer=r["battle_royale"]["current"]["remainingTimer"],
-                BattleRoyal_Next_Map=r["battle_royale"]["next"]["map"],
+                BattleRoyal_Next_Map=translate(r["battle_royale"]["next"]["map"], "Map"),
                 BattleRoyal_Next_Start_Time=r["battle_royale"]["next"]["start"],
                 BattleRoyal_Next_End_Time=r["battle_royale"]["next"]["end"],
                 BattleRoyal_Next_Start_Time_datetime=r["battle_royale"]["next"]["readableDate_start"],
                 BattleRoyal_Next_End_Time_datetime=r["battle_royale"]["next"]["readableDate_end"],
-                Arena_Current_Map=r["arenas"]["current"]["map"],
+                Arena_Current_Map=translate(r["arenas"]["current"]["map"], "Map"),
                 Arena_Current_Image=r["arenas"]["current"]["asset"],
                 Arena_Current_Start_Time=r["arenas"]["current"]["start"],
                 Arena_Current_Start_Time_datetime=r["arenas"]["current"]["readableDate_start"],
                 Arena_Current_End_Time=r["arenas"]["current"]["end"],
                 Arena_Current_End_Time_datetime=r["arenas"]["current"]["readableDate_end"],
                 Arena_Current_remainingTimer=r["arenas"]["current"]["remainingTimer"],
-                Arena_Next_Map=r["arenas"]["next"]["map"],
+                Arena_Next_Map=translate(r["arenas"]["next"]["map"], "Map"),
                 Arena_Next_Start_Time=r["arenas"]["next"]["start"],
                 Arena_Next_End_Time=r["arenas"]["next"]["end"],
                 Arena_Next_Start_Time_datetime=r["arenas"]["next"]["readableDate_start"],
                 Arena_Next_End_Time_datetime=r["arenas"]["next"]["readableDate_end"],
-                Ranked_Current_Map=r["ranked"]["current"]["map"],
+                Ranked_Current_Map=translate(r["ranked"]["current"]["map"], "Map"),
                 Ranked_Current_Image=r["ranked"]["current"]["asset"],
-                Ranked_next_Map=r["ranked"]["next"]["map"],
-                ArenaRanked_Current_Map=r["arenasRanked"]["current"]["map"],
+                Ranked_next_Map=translate(r["ranked"]["next"]["map"], "Map"),
+                ArenaRanked_Current_Map=translate(r["arenasRanked"]["current"]["map"], "Map"),
                 ArenaRanked_Current_Image=r["arenasRanked"]["current"]["asset"],
                 ArenaRanked_Current_Start_Time=r["arenasRanked"]["current"]["start"],
                 ArenaRanked_Current_End_Time=r["arenasRanked"]["current"]["end"],
                 ArenaRanked_Current_Start_Time_datetime=r["arenasRanked"]["current"]["readableDate_start"],
                 ArenaRanked_Current_End_Time_datetime=r["arenasRanked"]["current"]["readableDate_end"],
                 ArenaRanked_Current_remainingTimer=r["arenasRanked"]["current"]["remainingTimer"],
-                ArenaRanked_Next_Map=r["arenasRanked"]["next"]["map"],
+                ArenaRanked_Next_Map=translate(r["arenasRanked"]["next"]["map"], "Map"),
                 ArenaRanked_Next_Start_Time=r["arenasRanked"]["next"]["start"],
                 ArenaRanked_Next_End_Time=r["arenasRanked"]["next"]["end"],
                 ArenaRanked_Next_Start_Time_datetime=r["arenasRanked"]["next"]["readableDate_start"],

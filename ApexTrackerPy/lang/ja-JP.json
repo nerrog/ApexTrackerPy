@@ -1,0 +1,23 @@
+{
+  "Ranked": {
+    "Unranked": "ランクなし",
+    "Bronze": "ブロンズ",
+    "Silver": "シルバー",
+    "Gold": "ゴールド",
+    "Platinum": "プラチナ",
+    "Diamond": "ダイアモンド",
+    "Master": "マスター",
+    "Predator": "プレデター"
+  },
+  "Map": {
+    "Worlds Edge": "ワールズエッジ",
+    "Storm Point": "ストームポイント",
+    "Olympus": "オリンパス",
+    "Kings Canyon": "キングスキャニオン",
+
+    "Party crasher": "パーティークラッシャー",
+    "Phase runner": "フェーズランナー",
+    "Overflow": "オーバーフロー",
+    "Encore": "アンコール"
+  }
+}
