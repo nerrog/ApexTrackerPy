@@ -10,7 +10,7 @@ setup(
     description="Library for easily calling Apex tracker APIs (supports TRN and APEX LEGENDS APIs)",
     install_requires=["requests"],
     package_data={
-        "ApexTrackerPy": ["lang/*.json"],
+        "ApexTrackerPy": ["lang_data/*.json"],
     },
     packages=find_packages()
 )

@@ -16,7 +16,7 @@ def pre_load_lang(*lang):
     if lang:
         LANG = lang[0]
 
-    with open(ApexTrackerPy.__path__[0]+"/lang/"+LANG+".json", 'r', encoding="utf_8") as f:
+    with open(ApexTrackerPy.__path__[0]+"/lang_data/"+LANG+".json", 'r', encoding="utf_8") as f:
         load_lang = json.load(f)
         IS_PRE_LOAD_LANG = True
 
@@ -29,7 +29,7 @@ def translate(input, type):
         return input
 
     if not IS_PRE_LOAD_LANG:    
-        with open(ApexTrackerPy.__path__[0]+"/lang/"+LANG+".json", 'r', encoding="utf_8") as f:
+        with open(ApexTrackerPy.__path__[0]+"/lang_data/"+LANG+".json", 'r', encoding="utf_8") as f:
             load_lang = json.load(f)
 
     for key in load_lang[type].keys():
