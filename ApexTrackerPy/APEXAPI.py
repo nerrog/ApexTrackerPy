@@ -57,11 +57,13 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
     platform = _fixplatform(platform)
 
     if _checkplatform(platform or Isuid):
+        # WANING
+        # Cloub API is Beta
         url = ""
         if Isuid:
-            url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&uid={playerName}'
+            url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&uid={playerName}&enableClubsBeta'
         else:
-            url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&player={playerName}'
+            url = f'https://api.mozambiquehe.re/bridge?version=5&platform={platform}&player={playerName}&enableClubsBeta'
         try:
             res = get_request(url, {'Authorization': api_key})
             response = res[0]
@@ -106,6 +108,19 @@ def GetApexPlayerStatus(api_key, platform, playerName, *Isuid):
                     PartyFull=_1_ToTrue(r.get("realtime", {}).get("partyFull")),
                     Selected_legend=r.get("realtime", {}).get("selectedLegend"),
                     CurrentState=r.get("realtime", {}).get("currentState"),
+                    #v1.9
+                    ClubName=r.get("club", {}).get("name"),
+                    Club_id=r.get("club", {}).get("id"),
+                    ClubTag=r.get("club", {}).get("tag"),
+                    Club_logo=r.get("club", {}).get("logo"),
+                    Club_CreatedUID=r.get("club", {}).get("createdByUID"),
+                    Club_GroupSize=r.get("club", {}).get("groupSize"),
+                    Club_MaxGropSize=r.get("club", {}).get("maxGroupSize"),
+                    Club_DataCenter=r.get("club", {}).get("datacenter"),
+                    Club_Isfreejoin=r.get("club", {}).get("joinConfig", {}).get("isFreeJoin"),
+                    Club_isPwdProtected=r.get("club", {}).get("joinConfig", {}).get("isPwdProtected"),
+                    Club_canInviteToJoin=r.get("club", {}).get("joinConfig", {}).get("canInviteToJoin"),
+                    Club_members_json_list=r.get("club", {}).get("members"),
                     )
                 return res
             else:
