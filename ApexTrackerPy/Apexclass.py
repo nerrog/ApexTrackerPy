@@ -9,10 +9,7 @@ class A_Player_Data:
     def __init__(self, row_json, elapsed_time,
     name, uid, avatar_url, level, Isban, Rank_RP, CurrentRank, Arena_Rank_RP, Arena_Current_Rank, battlepass_level, battlepass_history_list, badges_json, 
     Player_status, legends_json, total_kill, total_damage, lobbyState, IsOnline, IsInGame,
-    canJoin, PartyFull, Selected_legend, CurrentState,
-    ClubName, ClubTag, Club_id, Club_CreatedUID, Club_GroupSize, Club_MaxGropSize,
-    Club_DataCenter, Club_logo, Club_Isfreejoin, Club_isPwdProtected, Club_canInviteToJoin, 
-    Club_members_json_list):
+    canJoin, PartyFull, Selected_legend, CurrentState):
         self.row_json = row_json
         self.elapsed_time = elapsed_time
         self.name = name
@@ -39,19 +36,6 @@ class A_Player_Data:
         self.PartyFull = PartyFull
         self.Selected_legend = Selected_legend
         self.CurrentState = CurrentState
-        #v1.9
-        self.ClubName = ClubName
-        self.ClubTag = ClubTag
-        self.Club_id = Club_id
-        self.Club_logo = Club_logo
-        self.Club_CreatedUID = Club_CreatedUID
-        self.Club_GroupSize = Club_GroupSize
-        self.Club_MaxGropSize = Club_MaxGropSize
-        self.Club_DataCenter = Club_DataCenter
-        self.Club_Isfreejoin = Club_Isfreejoin
-        self.Club_isPwdProtected = Club_isPwdProtected
-        self.Club_canInviteToJoin = Club_canInviteToJoin
-        self.Club_members_json_list = Club_members_json_list
 
 
 
